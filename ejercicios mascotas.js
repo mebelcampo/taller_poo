@@ -4,47 +4,31 @@ class Mascota {
         this.nombre = nombre;
         this.tipo = tipo;
     }
-
-    // Método para mostrar información básica de la mascota
     mostrarInfo() {
         console.log(`Nombre: ${this.nombre}, Tipo: ${this.tipo}`);
     }
-
-    // Método para hacer que la mascota realice su acción (será sobrescrito en las subclases)
     hacerSonido() {
         console.log(`${this.nombre} hace un sonido.`);
     }
 }
-
-// Clase derivada Perro
 class Perro extends Mascota {
     constructor(nombre) {
         super(nombre, "Perro");
     }
-
-    // Método específico para ladrar
     ladrar() {
         console.log(`${this.nombre} está ladrando: ¡Guau! ¡Guau!`);
     }
-
-    // Sobrescribir el método hacerSonido
     hacerSonido() {
         this.ladrar();
     }
 }
-
-// Clase derivada Gato
 class Gato extends Mascota {
     constructor(nombre) {
         super(nombre, "Gato");
     }
-
-    // Método específico para maullar
     maullar() {
         console.log(`${this.nombre} está maullando: ¡Miau! ¡Miau!`);
     }
-
-    // Sobrescribir el método hacerSonido
     hacerSonido() {
         this.maullar();
     }

@@ -1,11 +1,9 @@
-// Clase base CuentaBancaria
 class CuentaBancaria {
     constructor(numeroCuenta, saldo) {
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
     }
 
-    // Método para realizar un depósito
     depositar(cantidad) {
         if (cantidad > 0) {
             this.saldo += cantidad;
@@ -15,7 +13,6 @@ class CuentaBancaria {
         }
     }
 
-    // Método para realizar un retiro
     retirar(cantidad) {
         if (cantidad > 0 && cantidad <= this.saldo) {
             this.saldo -= cantidad;
@@ -25,12 +22,10 @@ class CuentaBancaria {
         }
     }
 
-    // Método para mostrar la información básica de la cuenta
     mostrarInfo() {
         console.log(`Cuenta: ${this.numeroCuenta}, Saldo: $${this.saldo}`);
     }
 }
-
 
 class CuentaAhorros extends CuentaBancaria {
     constructor(numeroCuenta, saldo, tasaInteres) {
@@ -41,23 +36,20 @@ class CuentaAhorros extends CuentaBancaria {
     aplicarIntereses() {
         const interes = this.saldo * (this.tasaInteres / 100);
         this.saldo += interes;
-        console.log(`Intereses aplicados: $${interes(2)}. Nuevo saldo: $${this.saldo(2)}`);
+        console.log(`Intereses aplicados: $${interes.toFixed(2)}. Nuevo saldo: $${this.saldo.toFixed(2)}`);
     }
 
- 
     mostrarInfo() {
         super.mostrarInfo();
         console.log(`Tasa de interés: ${this.tasaInteres}%`);
     }
 }
 
-
 class CuentaCorriente extends CuentaBancaria {
     constructor(numeroCuenta, saldo, limiteDescubierto) {
         super(numeroCuenta, saldo);
         this.limiteDescubierto = limiteDescubierto; 
     }
-
 
     retirar(cantidad) {
         if (cantidad > 0 && (this.saldo - cantidad >= -this.limiteDescubierto)) {
@@ -74,14 +66,11 @@ class CuentaCorriente extends CuentaBancaria {
     }
 }
 
-
-let cuentaAhorros1 = new CuentaAhorros('12345', 1000, 5); 
-let cuentaCorriente1 = new CuentaCorriente('67890', 500, 200); 
-let cuentaAhorros2 = new CuentaAhorros('23456', 2000, 3); 
-
+let cuentaAhorros1 = new CuentaAhorros('13453', 3000, 5); 
+let cuentaCorriente1 = new CuentaCorriente('3332', 300, 400); 
+let cuentaAhorros2 = new CuentaAhorros('34533', 1000, 3); 
 
 let cuentas = [cuentaAhorros1, cuentaCorriente1, cuentaAhorros2];
-
 
 class Banco {
     constructor() {
@@ -100,17 +89,14 @@ class Banco {
             } else if (operacion === 'retirar') {
                 cuenta.retirar(cantidad);
             }
- 
         });
     }
 
- 
     aplicarIntereses() {
         this.cuentas.forEach(cuenta => {
             if (cuenta instanceof CuentaAhorros) {
                 console.log(`Aplicando intereses en la cuenta ${cuenta.numeroCuenta}:`);
                 cuenta.aplicarIntereses();
-           
             }
         });
     }
@@ -118,25 +104,19 @@ class Banco {
     mostrarCuentas() {
         this.cuentas.forEach(cuenta => {
             cuenta.mostrarInfo();
-        
         });
     }
 }
 
-
 let banco = new Banco();
 
-// Agregar cuentas al banco
 banco.agregarCuenta(cuentaAhorros1);
 banco.agregarCuenta(cuentaCorriente1);
 banco.agregarCuenta(cuentaAhorros2);
 
-// Mostrar información de todas las cuentas
 banco.mostrarCuentas();
 
-// Realizar una operación de depósito y retiro en todas las cuentas
-banco.realizarOperacion('depositar', 100); // Depositar $100 en todas las cuentas
-banco.realizarOperacion('retirar', 50);   // Retirar $50 de todas las cuentas
+banco.realizarOperacion('depositar', 100);
+banco.realizarOperacion('retirar', 50);
 
-// Aplicar intereses en las cuentas de ahorros
 banco.aplicarIntereses();

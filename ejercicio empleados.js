@@ -39,10 +39,10 @@ class EmpleadoMedioTiempo extends Empleado {
 
 // Crear una lista de empleados (un arreglo)
 let empleados = [
-    new EmpleadoTiempoCompleto("Juan Pérez", 2000, 160),  // 160 horas trabajadas
-    new EmpleadoMedioTiempo("Ana Gómez", 1200, 80),      // 80 horas trabajadas
-    new EmpleadoTiempoCompleto("Carlos López", 2500, 170),// 170 horas trabajadas
-    new EmpleadoMedioTiempo("María Rodríguez", 1000, 50)  // 50 horas trabajadas
+    new EmpleadoTiempoCompleto("ester moca", 2000, 243),  
+    new EmpleadoMedioTiempo("Isabela Fernandez", 1200, 45),      
+    new EmpleadoTiempoCompleto("ana Solares", 2500, 134),
+    new EmpleadoMedioTiempo("juan Rodríguez", 1000, 30)  
 ];
 
 // Mostrar los sueldos de todos los empleados

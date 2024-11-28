@@ -9,7 +9,7 @@ class Persona {
     }
 }
 
-let personita = new Persona('Angela', 19);
+let personita = new Persona('mebel', 18);
 personita.saludar();
 
 class Estudiante extends Persona { 
@@ -35,9 +35,9 @@ class Estudiante extends Persona {
         console.log("promedio de notas:"+promedio  )
     }
 }
-let promedio = new Estudiante ("Angela", '19', '23')
+let promedio = new Estudiante ("mebel", '18', '20')
 promedio.saludar();
-promedio.agregarcalificacion(5);
 promedio.agregarcalificacion(4);
 promedio.agregarcalificacion(5);
+promedio.agregarcalificacion(3);
 promedio.obtenerpromedios();

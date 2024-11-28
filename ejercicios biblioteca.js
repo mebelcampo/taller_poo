@@ -20,12 +20,13 @@ class LibroFisico extends Libros {
 }
 
 let libros = [
-    new LibroFisico("Crónicas de una muerte anunciada", "Gabriel García", 200),
-    new LibroDigital("100 años de soledad", "Gabriel García", "2G")
+    new LibroFisico("ser feliz es la neta", "Jorge Bucay", 230),
+    new LibroDigital("el principito", "Antoine de Saint-Exupéry", 230)
 ];
 
-let listarlibros = (libros, autor) => {
-    return libros.filter(libro => libro.autor=== autor);
-}
+let listarlibros = (libros, autores) => {
+    let autoresArray = autores.split(",").map(autor => autor.trim());
+    return libros.filter(libro => autoresArray.includes(libro.autor));
+};
 
-console.log(listarlibros(libros, 'Gabriel García'));
+console.log(listarlibros(libros, "Jorge Bucay, Antoine de Saint-Exupéry"));

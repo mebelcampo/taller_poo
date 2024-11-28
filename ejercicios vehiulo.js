@@ -1,53 +1,57 @@
-
-//Crea una clase base Vehiculo con atributos como marca, modelo y año. Luego, crea clases
- //derivadas como Auto y Moto que hereden de Vehiculo. Agrega métodos específicos a cada clase, 
- //como conducir() en Auto. Usa un arreglo para almacenar vehículos y crea un método que los liste según su tipo.
-
-class vehiulo {
-    constructor(marca, modelo, año){
+class Vehiculo {
+    constructor(marca, modelo, año) {
         this.marca = marca;
         this.modelo = modelo;
         this.año = año;
     }
-    mostrarinfo(){
-        console.log(this.marca + this.modelo + this.año);
+
+    mostrarInfo() {
+        console.log(`Marca: ${this.marca}, Modelo: ${this.modelo}, Año: ${this.año}`);
     }
 }
-class auto extends vehiulo{
-    constructor(marca, modelo, año){
-        super(marca, modelo, año)
-    }
-    conducirauto(){
-        console.log('yo conduzco un auto de marca:'+this.marca+'modelo:'+this.modelo+'año:'+this.año)
 
+class Auto extends Vehiculo {
+    constructor(marca, modelo, año) {
+        super(marca, modelo, año);
     }
 
+    conducirAuto() {
+        console.log(`Yo conduzco un auto de marca: ${this.marca}, modelo: ${this.modelo}, año: ${this.año}`);
+    }
 }
-class moto extends vehiulo{
-    constructor(marca, modelo, año){
-        super(marca, modelo, año)
-        this.tipo =[]
+
+// Clase Moto
+class Moto extends Vehiculo {
+    constructor(marca, modelo, año) {
+        super(marca, modelo, año);
+        this.vehiculosAgregados = [];
     }
-    conducirmoto(){
-        console.log('yo conduzco una moto de marca:'+this.marca+'modelo:'+this.modelo+'año:'+this.año)
-        
+
+    conducirMoto() {
+        console.log(`Yo conduzco una moto de marca: ${this.marca}, modelo: ${this.modelo}, año: ${this.año}`);
     }
-    agregarvehiulos(vehiulo){
-        this.tipo.push(vehiulo);
-        console.log(`vehiulos agregados: ${vehiulo}`);
+
+    agregarVehiculo(vehiculo) {
+        this.vehiculosAgregados.push(vehiculo);
+        console.log(`Vehículo agregado: ${vehiculo.marca} ${vehiculo.modelo}`);
     }
 
     listarPorTipo(tipo) {
-        console.log(`Listando vehículos de tipo: ${tipo.nombre}`);
-        for (let i = 0; i < this.tipo.length; i++) {
-            if (this.tipo[i] instanceof tipo) {
-                this.tipo[i].mostrarInfo();
+        console.log(`Listando vehículos de tipo: ${tipo.name}`);
+        for (let i = 0; i < this.vehiculosAgregados.length; i++) {
+            if (this.vehiculosAgregados[i] instanceof tipo) {
+                this.vehiculosAgregados[i].mostrarInfo();
             }
         }
-
     }
 }
-const auto1 = new auto('Toyota', 'Corolla', 2021);
-const moto1 = new moto('Yamaha', 'YZF-R6', 2019);
-auto1.conducirAuto(); 
-moto1.conducirMoto(); 
+const auto1 = new Auto('Toyota', '4x4', 2023);
+const moto1 = new Moto('AKT', 'H23H2', 2025);
+
+auto1.conducirAuto();
+moto1.conducirMoto();
+
+moto1.agregarVehiculo(auto1);
+moto1.agregarVehiculo(new Moto('AKT', 'H23H2', 2025));
+
+moto1.listarPorTipo(Moto);

@@ -57,10 +57,10 @@ class Estudiante extends Persona {
     }
 }
 
-const perso1 = new Persona("Ramon Valdez", 58);
+const perso1 = new Persona("carolina sarria", 50);
 console.log(perso1.saludar());
 
-const estu1 = new Estudiante("sara Rengifo", 25);
+const estu1 = new Estudiante("pedro salazar", 30);
 console.log(estu1.saludar());
 estu1.agregarCalificaion(2.3);
 estu1.agregarCalificaion(1.5);

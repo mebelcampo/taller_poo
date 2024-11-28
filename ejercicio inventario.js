@@ -35,17 +35,15 @@ class Producto {
     }
 }
 
-// Clase Electrodomestico que hereda de Producto
 class Electrodomestico extends Producto {
     constructor(nombre, precio, cantidadEnStock, marca) {
         super(nombre, precio, cantidadEnStock);
         this.marca = marca;
-        this.productos = []; // Lista de productos adicionales
+        this.productos = [];
     }
 
     agregarProducto(nombre, precio, cantidadEnStock, marca) {
-        // Aquí se crea el objeto Producto, no solo los datos como string
-        const nuevoProducto = new Producto(nombre, precio, cantidadEnStock);
+        const nuevoProducto = new Electrodomestico(nombre, precio, cantidadEnStock, marca);
         this.productos.push(nuevoProducto);
         console.log(`Producto agregado: ${nuevoProducto.getNombre()}`);
     }
@@ -54,26 +52,19 @@ class Electrodomestico extends Producto {
         console.log(`Nombre: ${this.nombre}, Precio: ${this.precio}, Stock: ${this.cantidadEnStock}, Marca: ${this.marca}`);
     }
 
-    // Método para listar productos con stock menor a 10
     listarProductosConPocoStock() {
         console.log("Productos con stock menor a 10:");
-        for (let i = 0; i < this.productos.length; i++) {
-            // Asegúrate de que los objetos en `productos` sean instancias de Producto
-            if (this.productos[i].getCantidadEnStock() < 10) {
-                this.productos[i].mostrarInfo();
+        this.productos.forEach(producto => {
+            if (producto.getCantidadEnStock() < 10) {
+                producto.mostrarInfo();
             }
-        }
+        });
     }
 }
-
-let electrodomesticoPrincipal = new Electrodomestico('Licuadora', 45000, 56, 'Imusa');
+let electrodomesticoPrincipal = new Electrodomestico('Nevera', 65000, 34, 'Acer');
 electrodomesticoPrincipal.mostrarInfo();
-
-// Agregar productos correctamente creando instancias de Producto
-electrodomesticoPrincipal.agregarProducto('Estufa', 5600, 5, 'Haceb');
-electrodomesticoPrincipal.agregarProducto('Nevera', 8522, 78, 'Imusa');
-electrodomesticoPrincipal.agregarProducto('Estufa', 78000, 6, 'Kalley');
-electrodomesticoPrincipal.agregarProducto('Horno', 96000, 100, 'Haceb');
-
-// Listar productos con stock menor a 10
+electrodomesticoPrincipal.agregarProducto('Celular', 4600, 4, 'Samsung');
+electrodomesticoPrincipal.agregarProducto('Televisor', 8544, 3, 'LG');
+electrodomesticoPrincipal.agregarProducto('Portátil', 5600, 6, 'HP');
+electrodomesticoPrincipal.agregarProducto('Computador', 4600, 45, 'Asus');
 electrodomesticoPrincipal.listarProductosConPocoStock();
